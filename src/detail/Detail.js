@@ -13,11 +13,11 @@ class Detail extends React.Component {
         <table>
           <tr>
             <th>タイトル</th>
-            <td>{contens.title}</td>
+            <td>{this.contents.title}</td>
           </tr>
           <tr>
             <th>本文</th>
-            <td>{contents.body}</td>
+            <td>{this.contents.body}</td>
           </tr>
         </table>
         <button>
