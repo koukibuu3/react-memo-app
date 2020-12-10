@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const List = () => {
@@ -6,10 +7,15 @@ const List = () => {
   return (
     <div className="List">
       <ul>
-        { list.map((value) => <li>{value} <Link to="/detail"><button className="default">to detail</button></Link></li>) }
+        { list.map((value) => (
+          <li key="key">
+            {value}
+            <Link to="/detail"><button type="button">to detail</button></Link>
+          </li>
+        )) }
       </ul>
     </div>
   );
-}
+};
 
 export default List;
