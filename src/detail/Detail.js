@@ -2,12 +2,12 @@ import React from 'react';
 
 class Detail extends React.Component {
   contents = {
-    title : 'たいとるだよー',
-    body : 'ほんぶんだよー',
+    title: 'たいとるだよー',
+    body: 'ほんぶんだよー',
   }
 
   render() {
-    return(
+    return (
       <>
         <h1>詳細ページ</h1>
         <table>
@@ -20,14 +20,14 @@ class Detail extends React.Component {
             <td>{this.contents.body}</td>
           </tr>
         </table>
-        <button>
+        <button type="button">
           削除
         </button>
-        <button>
+        <button type="button">
           編集
         </button>
       </>
-    )
+    );
   }
 }
 
