@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Edit extends React.Component {
   contents = {
@@ -20,9 +21,7 @@ class Edit extends React.Component {
             <td><textarea>{this.contents.body}</textarea></td>
           </tr>
         </table>
-        <button type="button">
-          保存
-        </button>
+        <Link to="/detail"><button type="button">保存</button></Link>
       </>
     );
   }
