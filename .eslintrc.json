@@ -21,6 +21,7 @@
     "rules": {
         "react/jsx-filename-extension": [1, {"extensions": [".js", ".jsx"] }], // ファイル名 ".js" も許可する
         "semi": ["error", "always"], // 文末のセミコロンは必須
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "react/prop-types": "off"
     }
 }
