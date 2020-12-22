@@ -21,6 +21,7 @@ class Detail extends React.Component {
             <td>{this.contents.body}</td>
           </tr>
         </table>
+        <Link to="/"><button type="button">一覧ページに戻る</button></Link>
         <button type="button">削除</button>
         <Link to="/edit"><button type="button">編集</button></Link>
       </>
