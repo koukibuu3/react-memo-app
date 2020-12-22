@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Detail extends React.Component {
   contents = {
@@ -20,12 +21,8 @@ class Detail extends React.Component {
             <td>{this.contents.body}</td>
           </tr>
         </table>
-        <button type="button">
-          削除
-        </button>
-        <button type="button">
-          編集
-        </button>
+        <button type="button">削除</button>
+        <Link to="/edit"><button type="button">編集</button></Link>
       </>
     );
   }
