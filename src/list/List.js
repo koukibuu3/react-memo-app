@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Box, Button } from '@material-ui/core';
 
 const MEMOS = [
   { title: 'たいとる', body: 'ぼでー' },
@@ -16,11 +17,12 @@ const List = () => {
 
   return (
     <div className="List">
-      <ul>
-        { list.map((value) => (
-          <Item content={value} />
-        )) }
-      </ul>
+      <Button variant="outlined" color="primary">
+        create
+      </Button>
+      { list.map((value) => (
+        <Item content={value} />
+      )) }
     </div>
   );
 };
@@ -28,13 +30,14 @@ const List = () => {
 const Item = (props) => {
   const { content } = props;
   return (
-    <li key="key">
-      {content.title}
-      <span>
-        {content.body}
-      </span>
-      <Link to="/detail"><button type="button">to detail</button></Link>
-    </li>
+    <Box component="span" m={1}>
+      <Link to="/detail">
+        <Button variant="contained">
+          {content.title}
+          to detail
+        </Button>
+      </Link>
+    </Box>
   );
 };
 
