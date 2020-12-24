@@ -18,7 +18,9 @@ const List = () => {
   return (
     <div className="List">
       <Button variant="outlined" color="primary">
-        create
+        <Link to="/create">
+          create
+        </Link>
       </Button>
       { list.map((value) => (
         <Item content={value} />
