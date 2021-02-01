@@ -1,6 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button, Grid } from '@material-ui/core';
+import { Button, Grid, Card, CardContent, CardActions, Typography } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core/styles";
+
+import Header from '../components/Header';
+
+const useStyles = makeStyles(() => ({
+  card: {
+    height: 180,
+    width: 180
+  },
+  createButton: {
+    margin: 'auto'
+  }
+}));
 
 import Header from '../components/Header';
 
@@ -15,6 +28,7 @@ const getList = () => {
 };
 
 const List = () => {
+  const classes = useStyles();
   const list = getList();
 
   return (
@@ -22,33 +36,26 @@ const List = () => {
       <Header/>
       <Grid container direction="row" spacing={3}>
         <Grid item spacing={3}>
-          <Button variant="outlined" color="primary">
-            <Link to="/create">
-              create
-            </Link>
-          </Button>
+          <Card className={classes.card}>
+            <CardActions>
+              <Button className={classes.createButton} size="medium">
+                <Link to="/create">create</Link>
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
         { list.map((value) => (
           <Grid item spacing={3}>
-            <Item content={value} />
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography variant="h6" component="h2">{value.title}</Typography>
+                <Typography>{value.body}</Typography>
+              </CardContent>
+            </Card>
           </Grid>
         )) }
       </Grid>
     </div>
-  );
-};
-
-const Item = (props) => {
-  const { content } = props;
-  return (
-    <Box component="span" m={1}>
-      <Link to="/detail">
-        <Button variant="contained">
-          {content.title}
-          to detail
-        </Button>
-      </Link>
-    </Box>
   );
 };
 
