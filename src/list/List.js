@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button } from '@material-ui/core';
+import { Box, Button, Grid } from '@material-ui/core';
 
 import Header from '../components/Header';
 
@@ -20,14 +20,20 @@ const List = () => {
   return (
     <div className="List">
       <Header/>
-      <Button variant="outlined" color="primary">
-        <Link to="/create">
-          create
-        </Link>
-      </Button>
-      { list.map((value) => (
-        <Item content={value} />
-      )) }
+      <Grid container direction="row" spacing={3}>
+        <Grid item spacing={3}>
+          <Button variant="outlined" color="primary">
+            <Link to="/create">
+              create
+            </Link>
+          </Button>
+        </Grid>
+        { list.map((value) => (
+          <Grid item spacing={3}>
+            <Item content={value} />
+          </Grid>
+        )) }
+      </Grid>
     </div>
   );
 };
