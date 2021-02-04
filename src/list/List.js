@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Button } from '@material-ui/core';
 
+import Header from '../components/Header';
+
 const MEMOS = [
   { title: 'たいとる', body: 'ぼでー' },
   { title: 'たいとる2', body: 'ぼでー2' },
@@ -17,6 +19,7 @@ const List = () => {
 
   return (
     <div className="List">
+      <Header/>
       <Button variant="outlined" color="primary">
         <Link to="/create">
           create

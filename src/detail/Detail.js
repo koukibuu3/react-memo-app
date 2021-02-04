@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from '../components/Header';
+
 class Detail extends React.Component {
   contents = {
     title: 'たいとるだよー',
@@ -10,6 +12,7 @@ class Detail extends React.Component {
   render() {
     return (
       <>
+        <Header/>
         <h1>詳細ページ</h1>
         <table>
           <tr>
