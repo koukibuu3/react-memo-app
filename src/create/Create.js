@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import TextInput from '../components/Atoms/TextInput';
+import { TextField } from '@material-ui/core';
 
 import Header from '../components/Header';
 
@@ -13,9 +15,12 @@ const Create = () => {
       <Header/>
       <h1>追加ページ</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input name="title" placeholder="タイトルを入力してください" ref={register({ required: true, maxLength: 20 })} />
-        {errors.title && <span>タイトルが未入力です</span>}
-        <input name="body" placeholder="本文を入力してください" ref={register({ required: true})} />
+        <div>
+        <TextInput label="title" required="true" maxLength="20"/>
+        </div>
+        <div>
+          <TextInput label="body" required="false" maxLength="200"/>
+        </div>
         <input type="submit" />
       </form>
       <Link to='/'><button>戻る</button></Link>
