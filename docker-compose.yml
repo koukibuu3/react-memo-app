@@ -10,3 +10,15 @@ services:
     command: npm run start
     working_dir: "/usr/src/app"
     tty: true
+    depends_on:
+      - json-server
+  json-server:
+    build:
+      context: .
+      dockerfile: ./json-server/Dockerfile
+    command: json-server --watch db.json --port 3030 --host 0.0.0.0
+    tty: true
+    volumes:
+      - ./json-server/data:/data
+    ports:
+      - '3030:3030'
