@@ -24,15 +24,16 @@ const useStyles = makeStyles(() => ({
 }));
 
 import Header from '../components/Header';
+import { Memo } from '../types';
 
-const MEMOS = [
-  { title: 'たいとる', body: 'ぼでー' },
-  { title: 'たいとる2', body: 'ぼでー2' },
-  { title: 'たいとる3', body: 'ぼでー3' },
+const memos: Array<Memo> = [
+  { id: '1', title: 'たいとる', body: 'ぼでー' },
+  { id: '2', title: 'たいとる2', body: 'ぼでー2' },
+  { id: '3', title: 'たいとる3', body: 'ぼでー3' },
 ];
 
-const getList = () => {
-  return MEMOS;
+const getList = (): Array<Memo> => {
+  return memos;
 };
 
 const List = () => {
