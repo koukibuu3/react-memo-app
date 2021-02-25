@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
 function App() {
   const classes = useStyles();
   return (
-    <Container maxWidth="m" className={classes.root}>
+    <Container className={classes.root}>
       <Routes />
     </Container>
   );
