@@ -1,6 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button } from '@material-ui/core';
+import { Button, Grid, Card, CardContent, Typography } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  card: {
+    height: 180,
+    width: 180,
+  },
+  createButton: {
+    height: '100%',
+    width: '100%',
+  },
+  detailButton: {
+    height: '100%',
+    width: '100%',
+    '& a': {
+      textDecoration: 'none',
+      color: 'inherit',
+    }
+  }
+}));
 
 import Header from '../components/Header';
 
@@ -15,34 +36,35 @@ const getList = () => {
 };
 
 const List = () => {
+  const classes = useStyles();
   const list = getList();
 
   return (
     <div className="List">
-      <Header/>
-      <Button variant="outlined" color="primary">
-        <Link to="/create">
-          create
-        </Link>
-      </Button>
-      { list.map((value) => (
-        <Item content={value} />
-      )) }
+      <Grid container direction="row" spacing={3}>
+        <Grid item spacing={3}>
+          <Card className={classes.card}>
+            <Button className={classes.createButton}>
+              <Link to="/create"><Add fontSize="large" /></Link>
+            </Button>
+          </Card>
+        </Grid>
+        { list.map((value) => (
+          <Grid item spacing={3}>
+            <Card className={classes.card}>
+              <Button className={classes.detailButton}>
+                <Link to="/detail">
+                  <CardContent>
+                    <Typography variant="h6" component="h2">{value.title}</Typography>
+                    <Typography>{value.body}</Typography>
+                  </CardContent>
+                </Link>
+              </Button>
+            </Card>
+          </Grid>
+        )) }
+      </Grid>
     </div>
-  );
-};
-
-const Item = (props) => {
-  const { content } = props;
-  return (
-    <Box component="span" m={1}>
-      <Link to="/detail">
-        <Button variant="contained">
-          {content.title}
-          to detail
-        </Button>
-      </Link>
-    </Box>
   );
 };
 
