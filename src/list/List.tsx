@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Button, Grid, Card, CardContent, Typography } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 import { makeStyles } from "@material-ui/core/styles";
+import Header from '../components/Header';
+import { Memo } from '../types';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -22,9 +24,6 @@ const useStyles = makeStyles(() => ({
     }
   }
 }));
-
-import Header from '../components/Header';
-import { Memo } from '../types';
 
 const memos: Array<Memo> = [
   { id: '1', title: 'たいとる', body: 'ぼでー' },
