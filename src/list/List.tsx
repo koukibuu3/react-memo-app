@@ -4,7 +4,8 @@ import { Add } from '@material-ui/icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Memo } from '../types'
+import Header from '../components/Header'
+import { FetchMemoList as fetchMemoList } from '../utils'
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -25,22 +26,13 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const memos: Array<Memo> = [
-  { id: '1', title: 'たいとる', body: 'ぼでー' },
-  { id: '2', title: 'たいとる2', body: 'ぼでー2' },
-  { id: '3', title: 'たいとる3', body: 'ぼでー3' },
-]
-
-const getList = (): Array<Memo> => {
-  return memos
-}
-
 const List = () => {
   const classes = useStyles()
-  const list = getList()
+  const memoList = fetchMemoList()
 
   return (
     <div className="List">
+      <Header />
       <Grid container direction="row" spacing={3}>
         <Grid item spacing={3}>
           <Card className={classes.card}>
@@ -51,7 +43,7 @@ const List = () => {
             </Button>
           </Card>
         </Grid>
-        {list.map((value) => (
+        {memoList.map((value) => (
           <Grid item spacing={3} key={value.id}>
             <Card className={classes.card}>
               <Button className={classes.detailButton}>
