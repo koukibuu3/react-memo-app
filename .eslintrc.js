@@ -7,6 +7,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/typescript',
+    'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
@@ -14,6 +15,7 @@ module.exports = {
   ],
   plugins: [
     'import',
+    'jsx-a11y'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
