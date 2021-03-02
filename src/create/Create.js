@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import TextInput from '../components/Atoms/TextInput';
-import { TextField } from '@material-ui/core';
-
 import Header from '../components/Header';
 
 const Create = () => {
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data)
+  const onSubmit = value => console.log(value)
 
   return (
     <>
@@ -16,14 +12,39 @@ const Create = () => {
       <h1>追加ページ</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-        <TextInput label="title" required="true" maxLength="20"/>
+          title
+          <input
+            type="text"
+            label='title'
+            className={errors.title && 'error'}
+            name="title"
+            ref={register({
+              required: "titleは入力必須です",
+              maxLength: { value: 30, message: 'titleは30文字以内で入力してください。' }
+            })}
+          />
+          {errors.title && errors.title.message}
         </div>
         <div>
-          <TextInput label="body" required="false" maxLength="200"/>
+          body
+          <input
+            type="text"
+            label='body'
+            name="body"
+            className={errors.body && 'error'}
+            ref={register({
+              required: "bodyは入力必須です",
+              minLength: { value: 10, message: 'bodyは10文字以上で入力してください。' }
+            })}
+            />
+            {errors.body && errors.body.message}
+          </div>
+        <div>
+          <input type="submit" />
         </div>
-        <input type="submit" />
       </form>
-      <Link to='/'><button>戻る</button></Link>
+
+      <Link to='/'><button type="button">一覧ページに戻る</button></Link>
     </>
   );
 };
