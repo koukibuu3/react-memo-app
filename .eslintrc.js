@@ -6,10 +6,14 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
     'prettier',
+  ],
+  plugins: [
+    'import',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -46,5 +50,20 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     // 未使用の変数がある場合 error にする（デフォルトは warning）
     '@typescript-eslint/no-unused-vars': 'error',
+    // named-export を許可
+    'import/prefer-default-export': 'off',
+    // 絶対パスでのモジュール読み込みを許可
+    'import/no-unresolvrd': 'off',
+    // import の順番を並び替える
+    'import/order': [
+      'error',
+      {
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
+        },
+      },
+    ],
   },
 }
