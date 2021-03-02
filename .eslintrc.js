@@ -5,16 +5,20 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'prettier',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2018,
+    ecmaVersion: 2020,
     ecmaFeatures: {
       jsx: true,
     },
+    project: './tsconfig.json',
   },
   settings: {
     react: {
@@ -38,5 +42,9 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     // PropTypes を無効
     'react/prop-types': 'off',
+    // 関数の引数や戻り値に型を付けないことを許可
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    // 未使用の変数がある場合 error にする（デフォルトは warning）
+    '@typescript-eslint/no-unused-vars': 'error',
   },
 }
