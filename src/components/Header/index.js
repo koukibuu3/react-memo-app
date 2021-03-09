@@ -1,7 +1,7 @@
-import React from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Button} from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, Toolbar, IconButton, Typography, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Menu } from '@material-ui/icons'
+import React from 'react'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     marginBottom: theme.spacing(2),
   },
-}));
+}))
 
 const Header = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   return (
     <AppBar className={classes.margin} position="static">
@@ -36,4 +36,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default Header
