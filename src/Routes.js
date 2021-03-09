@@ -1,11 +1,11 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 
 // screens
-import List from './list/List';
-import Detail from './detail/Detail';
-import Edit from './edit/Edit';
-import Create from './create/Create';
+import Create from './create/Create'
+import Detail from './detail/Detail'
+import Edit from './edit/Edit'
+import List from './list/List'
 
 const Routes = () => {
   return (
@@ -17,7 +17,7 @@ const Routes = () => {
         <Route path="/edit" component={Edit} />
       </div>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default Routes;
+export default Routes

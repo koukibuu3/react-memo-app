@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import Header from '../components/Header';
+import Header from '~/components/Header'
 
 class Edit extends React.Component {
   contents = {
@@ -12,22 +12,28 @@ class Edit extends React.Component {
   render() {
     return (
       <>
-        <Header/>
+        <Header />
         <h1>編集ページ</h1>
         <table>
           <tr>
             <th>タイトル</th>
-            <td><textarea>{this.contents.title}</textarea></td>
+            <td>
+              <textarea>{this.contents.title}</textarea>
+            </td>
           </tr>
           <tr>
             <th>本文</th>
-            <td><textarea>{this.contents.body}</textarea></td>
+            <td>
+              <textarea>{this.contents.body}</textarea>
+            </td>
           </tr>
         </table>
-        <Link to="/detail"><button type="button">保存</button></Link>
+        <Link to="/detail">
+          <button type="button">保存</button>
+        </Link>
       </>
-    );
+    )
   }
 }
 
-export default Edit;
+export default Edit

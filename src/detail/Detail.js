@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import Header from '../components/Header';
+import Header from '~/components/Header'
 
 class Detail extends React.Component {
   contents = {
@@ -12,7 +12,7 @@ class Detail extends React.Component {
   render() {
     return (
       <>
-        <Header/>
+        <Header />
         <h1>詳細ページ</h1>
         <table>
           <tr>
@@ -24,12 +24,16 @@ class Detail extends React.Component {
             <td>{this.contents.body}</td>
           </tr>
         </table>
-        <Link to="/"><button type="button">一覧ページに戻る</button></Link>
+        <Link to="/">
+          <button type="button">一覧ページに戻る</button>
+        </Link>
         <button type="button">削除</button>
-        <Link to="/edit"><button type="button">編集</button></Link>
+        <Link to="/edit">
+          <button type="button">編集</button>
+        </Link>
       </>
-    );
+    )
   }
 }
 
-export default Detail;
+export default Detail
