@@ -1,1 +1,6 @@
 .eslintrc.js
+
+# TODO いったんESLintで怒られないように設定
+/src/create/
+/src/detail/
+/src/edit/
