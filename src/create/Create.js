@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import Header from '../components/Header';
+import Button from '@material-ui/core/Button';
+
 
 const Create = () => {
   const { register, handleSubmit, errors } = useForm();
@@ -40,11 +42,11 @@ const Create = () => {
             {errors.body && errors.body.message}
           </div>
         <div>
-          <input type="submit" />
+          <Button type="submit" variant="contained" color="primary">保存</Button>
         </div>
       </form>
 
-      <Link to='/'><button type="button">一覧ページに戻る</button></Link>
+      <Link to='/'><Button type="button">一覧ページに戻る</Button></Link>
     </>
   );
 };
