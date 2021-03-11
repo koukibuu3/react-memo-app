@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
 
-import { Memo } from '../types';
+import { Memo } from '../types'
 
 // メモの全件取得
 export const FetchMemoList = (): Memo[] => {
-  const [ memoList, setMemoList ] = useState<Memo[]>([])
+  const [memoList, setMemoList] = useState<Memo[]>([])
   const fetchData = () => {
-    axios.get('http://localhost:3030/memos') // TODO URLは定数に切る
+    axios
+      .get('http://localhost:3030/memos') // TODO URLは定数に切る
       .then((res) => {
         setMemoList(res.data)
         console.log(`fetching ${res.data.length} memo data.`)
