@@ -21,3 +21,22 @@ export const FetchMemoList = (): Memo[] => {
   return memoList
 }
 // 参考 : https://qiita.com/Sotq_17/items/9a3e083d12a52afed6cd
+
+// メモの更新
+export const UpdateMemo = (memo: Memo) => {
+  const configs = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  axios
+    .put(
+      `http://localhost:3030/memos/${memo.id}`, // TODO URLは定数に切る
+      {
+        title: memo.title,
+        body: memo.body,
+      },
+      configs
+    )
+    .catch((e) => console.log(e))
+}
