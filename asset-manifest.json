@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-memo-app/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/react-memo-app/static/js/main.4f35a307.chunk.js",
-    "main.js.map": "/react-memo-app/static/js/main.4f35a307.chunk.js.map",
+    "main.js": "/react-memo-app/static/js/main.c3751c60.chunk.js",
+    "main.js.map": "/react-memo-app/static/js/main.c3751c60.chunk.js.map",
     "runtime-main.js": "/react-memo-app/static/js/runtime-main.f060bda2.js",
     "runtime-main.js.map": "/react-memo-app/static/js/runtime-main.f060bda2.js.map",
     "static/js/2.c420cce3.chunk.js": "/react-memo-app/static/js/2.c420cce3.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.f060bda2.js",
     "static/js/2.c420cce3.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.4f35a307.chunk.js"
+    "static/js/main.c3751c60.chunk.js"
   ]
 }
