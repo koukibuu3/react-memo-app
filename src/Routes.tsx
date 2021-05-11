@@ -9,7 +9,7 @@ import List from './list/List'
 
 const Routes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div>
         <Route path="/" exact component={List} />
         <Route path="/create" component={Create} />
