@@ -27,7 +27,12 @@ const Detail = () => {
         <button type="button">一覧ページに戻る</button>
       </Link>
       <button type="button">削除</button>
-      <Link to="/edit">
+      <Link
+        to={{
+          pathname: '/edit',
+          state: contents,
+        }}
+      >
         <button type="button">編集</button>
       </Link>
     </>
