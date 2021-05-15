@@ -16,10 +16,13 @@ const Edit: React.FC = () => {
 
   const [memo, setMemo] = useState<Memo>(state)
 
-  const onSubmit = (value) => {
-    console.log(value)
+  const onSubmit = () => {
+    console.log(memo)
     updateMemo(memo)
-    history.push('/detail')
+    history.push({
+      pathname: '/detail',
+      state: memo,
+    })
   }
 
   return (
