@@ -40,3 +40,22 @@ export const UpdateMemo = (memo: Memo) => {
     )
     .catch((e) => console.log(e))
 }
+
+// メモの新規追加
+export const CreateMemo = (memo: Memo) => {
+  const configs = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  axios
+    .post(
+      `http://localhost:3030/memos/`,
+      {
+        title: memo.title,
+        body: memo.body,
+      },
+      configs
+    )
+    .catch((e) => console.log(e))
+}
