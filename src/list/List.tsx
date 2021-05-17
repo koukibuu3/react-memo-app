@@ -43,16 +43,21 @@ const List = () => {
             </Button>
           </Card>
         </Grid>
-        {memoList.map((value) => (
-          <Grid item spacing={3} key={value.id}>
+        {memoList.map((memo) => (
+          <Grid item spacing={3} key={memo.id}>
             <Card className={classes.card}>
               <Button className={classes.detailButton}>
-                <Link to="/detail">
+                <Link
+                  to={{
+                    pathname: '/detail',
+                    state: memo,
+                  }}
+                >
                   <CardContent>
                     <Typography variant="h6" component="h2">
-                      {value.title}
+                      {memo.title}
                     </Typography>
-                    <Typography>{value.body}</Typography>
+                    <Typography>{memo.body}</Typography>
                   </CardContent>
                 </Link>
               </Button>

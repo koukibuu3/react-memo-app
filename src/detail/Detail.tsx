@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import Header from '../components/Header'
+import { Memo } from '../types'
 
 const Detail = () => {
-  const contents = {
-    title: 'たいとるだよー',
-    body: 'ほんぶんだよー',
-  }
+  const location = useLocation<Memo>()
+  const state = location.state
 
   return (
     <>
@@ -16,18 +15,23 @@ const Detail = () => {
       <table>
         <tr>
           <th>タイトル</th>
-          <td>{contents.title}</td>
+          <td>{state.title}</td>
         </tr>
         <tr>
           <th>本文</th>
-          <td>{contents.body}</td>
+          <td>{state.body}</td>
         </tr>
       </table>
       <Link to="/">
         <button type="button">一覧ページに戻る</button>
       </Link>
       <button type="button">削除</button>
-      <Link to="/edit">
+      <Link
+        to={{
+          pathname: '/edit',
+          state: state,
+        }}
+      >
         <button type="button">編集</button>
       </Link>
     </>
