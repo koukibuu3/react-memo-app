@@ -82,19 +82,38 @@ export const UpdateMemo = (memo: Memo) => {
 
 // メモの新規追加
 export const CreateMemo = (memo: Memo) => {
-  const configs = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }
-  axios
-    .post(
-      `http://localhost:3030/memos/`,
-      {
+  if (process.env.REACT_APP_ENVIRONMENT === 'local') {
+    // local用処理
+    const configs = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    axios
+      .post(
+        process.env.REACT_APP_LOCAL_DB_URL,
+        {
+          title: memo.title,
+          body: memo.body,
+        },
+        configs
+      )
+      .catch((e) => {
+        console.error(e)
+      })
+  } else if (process.env.REACT_APP_ENVIRONMENT === 'production') {
+    // 本番用処理
+    db.collection('memos')
+      .add({
         title: memo.title,
         body: memo.body,
-      },
-      configs
-    )
-    .catch((e) => console.log(e))
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((docRef) => {
+        console.log('Document written with ID: ', docRef.id)
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+  }
 }
