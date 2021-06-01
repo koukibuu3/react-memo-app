@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 import { Memo } from '../types'
 
-import { db } from './firebase'
+import firebase, { db } from './firebase'
 
 // メモの全件取得
 export const FetchMemoList = (): Memo[] => {
@@ -43,21 +43,41 @@ export const FetchMemoList = (): Memo[] => {
 
 // メモの更新
 export const UpdateMemo = (memo: Memo) => {
-  const configs = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }
-  axios
-    .put(
-      `http://localhost:3030/memos/${memo.id}`, // TODO URLは定数に切る
-      {
+  if (process.env.REACT_APP_ENVIRONMENT === 'local') {
+    // local機能
+    const configs = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    axios
+      .put(
+        `${process.env.REACT_APP_LOCAL_DB_URL}/${memo.id}`,
+        {
+          title: memo.title,
+          body: memo.body,
+        },
+        configs
+      )
+      .catch((e) => {
+        console.error(e)
+      })
+  } else if (process.env.REACT_APP_ENVIRONMENT === 'production') {
+    // 本番用処理
+    db.collection('memos')
+      .doc(memo.id)
+      .set({
         title: memo.title,
         body: memo.body,
-      },
-      configs
-    )
-    .catch((e) => console.log(e))
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then(() => {
+        console.log('Document written with ID: ', memo.id)
+      })
+      .catch((e) => {
+        console.error(e)
+      })
+  }
 }
 
 // メモの新規追加
