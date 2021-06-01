@@ -3,17 +3,36 @@ import { useState, useEffect } from 'react'
 
 import { Memo } from '../types'
 
+import { db } from './firebase'
+
 // メモの全件取得
 export const FetchMemoList = (): Memo[] => {
   const [memoList, setMemoList] = useState<Memo[]>([])
   const fetchData = () => {
-    axios
-      .get('http://localhost:3030/memos') // TODO URLは定数に切る
-      .then((res) => {
-        setMemoList(res.data)
-        console.log(`fetching ${res.data.length} memo data.`)
-      })
-      .catch((e) => console.log(e))
+    if (process.env.REACT_APP_ENVIRONMENT === 'local') {
+      // local用処理
+      axios
+        .get(process.env.REACT_APP_LOCAL_DB_URL)
+        .then((res) => {
+          setMemoList(res.data)
+          console.log(`fetching ${res.data.length} memo data.`)
+        })
+        .catch((e) => {
+          console.error(e)
+        })
+    } else if (process.env.REACT_APP_ENVIRONMENT === 'production') {
+      // 本番用処理
+      db.collection('memos')
+        .orderBy('createdAt', 'desc')
+        .get()
+        .then((snapshots) => {
+          setMemoList(snapshots.docs.map((doc) => doc.data() as Memo))
+          console.log(`fetching ${snapshots.docs.length} memo data.`)
+        })
+        .catch((e) => {
+          console.error(e)
+        })
+    }
   }
 
   // マウント時とアンマウント時に実行させる
